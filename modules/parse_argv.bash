@@ -7,7 +7,7 @@ while [ "$1" != "" ]; do
           -c | --category )   category="$2";  shift;;
           -w | --width    )   width="$2";     shift;;
           --debug         )   debug=1              ;;
-          -h | --help     )   source './usage.bash'; usage; exit;;
+          -h | --help     )   source './modules/usage.bash'; usage; exit;;
           * )                 args+=("$1")
       esac
       shift
