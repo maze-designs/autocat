@@ -4,7 +4,7 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 debug=0 # set in parse_argv
 
-source './parse_argv.bash'
+source './modules/parse_argv.bash'
 
 if [ -z "$autocat_program" ]; then
   if [ -z "$desktop" ]; then
@@ -17,7 +17,7 @@ if [ -z "$autocat_program" ]; then
     exit 1
   fi
   
-  if [[ ! -f ./apply_modules/$desktop.bash ]]; then
+  if [[ ! -f ./environments/$desktop.bash ]]; then
     echo "Your DE isn't supported yet. Try specifying the command to set your wallpaper via --program." >/dev/stderr
     exit 2
   fi
@@ -25,7 +25,7 @@ else
   desktop="custom_program"
 fi
 
-source ./get_picture.bash
+source ./modules/get_picture.bash
 get_picture
 
 
@@ -37,9 +37,9 @@ if [ $debug -eq 1 ]; then
   echo "FILEPATH: $kittypic"
 fi
 
-source check_for_program.bash
+source ./modules/check_for_program.bash
 
-source ./apply_modules/$desktop.bash
+source ./environments/$desktop.bash
 echo;
 apply_kitty "$kittypic"
 
