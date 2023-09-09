@@ -1,0 +1,48 @@
+#!/bin/bash
+
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+
+debug=0 # set in parse_argv
+
+source './parse_argv.bash'
+
+if [ -z "$autocat_program" ]; then
+  if [ -z "$desktop" ]; then
+    desktop=$XDG_SESSION_DESKTOP
+  fi
+  
+  if [ -z "$desktop" ]; then
+    echo "Unable to detect your desktop environment. Try setting it via --desktop or pointing to your wallpaper program or command via --program." >/dev/stderr
+  
+    exit 1
+  fi
+  
+  if [[ ! -f ./apply_modules/$desktop.bash ]]; then
+    echo "Your DE isn't supported yet. Try specifying the command to set your wallpaper via --program." >/dev/stderr
+    exit 2
+  fi
+else
+  desktop="custom_program"
+fi
+
+source ./get_picture.bash
+get_picture
+
+
+if [ $debug -eq 1 ]; then
+  echo "DE: $desktop"
+  echo "URL: $url"
+  echo "PROGRAM: $autocat_program"
+  echo "FILETYPE: $filetype"
+  echo "FILEPATH: $kittypic"
+fi
+
+source check_for_program.bash
+
+source ./apply_modules/$desktop.bash
+echo;
+apply_kitty "$kittypic"
+
+#swaybg -i /tmp/autocat.jpg
+#
+
