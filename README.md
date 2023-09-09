@@ -6,7 +6,7 @@ Supports Gnome, Plasma, multiple X11 and wayland WMs and a custom command option
 
 ## Usage
 
-~~~~~~```
+~~~
 
 autocat <args>
 
@@ -16,7 +16,7 @@ autocat <args>
   -d | --desktop   : Your DE/WM (Gnome, Plasma, i3, sway, etc.)
   -p | --program   : Your wallpaper program
 
-```
+~~~
 
 Just add autocat to your window manager's config or your environment's autostart.
 
