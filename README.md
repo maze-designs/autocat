@@ -2,7 +2,7 @@
 A new cat wallpaper every boot.
 
 Tiny bash script to fetch and apply a cat picture from [CATAAS](https://cataas.com).
-Supports Gnome, Plasma, multiple X11 and wayland WMs and a custom command option, in case yours isn't listed by default.
+Supports MacOS, Gnome, Plasma, multiple X11 and wayland WMs and a custom command option, in case yours isn't listed by default.
 
 ## Usage
 
