@@ -10,6 +10,10 @@ if [ -z "$autocat_program" ]; then
   if [ -z "$desktop" ]; then
     desktop=$XDG_SESSION_DESKTOP
   fi
+
+  if [ "$(uname)" = "Darwin" ]; then
+    desktop="macos"
+  fi
   
   if [ -z "$desktop" ]; then
     echo "Unable to detect your desktop environment. Try setting it via --desktop or pointing to your wallpaper program or command via --program." >/dev/stderr
